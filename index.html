@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Humera &amp; Hafeez Md. Aadil — Nikah Invitation | 19 Dec 2026</title>
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Great Vibes & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#6B122A',
+              deep: '#4A0B1C',
+              dark: '#330613',
+              soft: '#8D2340'
+            },
+            champagne: {
+              DEFAULT: '#D4AF37',
+              light: '#E8C97A',
+              pale: '#F6E7BE',
+              deep: '#A88220'
+            },
+            blush: {
+              ivory: '#FDF7F8',
+              soft: '#F8EAEE',
+              petal: '#F0D4DC',
+              rose: '#D99BAA'
+            },
+            ink: {
+              DEFAULT: '#3B1621',
+              muted: '#6D4753'
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- GSAP 3 + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Locomotive Scroll v5 (beta bundled) -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* =========================================================
+       BASE & LUXURY THEME TOKENS
+       ========================================================= */
+    :root {
+      --burgundy: #6B122A;
+      --burgundy-deep: #4A0B1C;
+      --gold: #D4AF37;
+      --gold-light: #E8C97A;
+      --gold-dark: #9B751C;
+      --ivory: #FDF7F8;
+      --blush: #F7E7EC;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: #F4E2E7;
+      color: #3B1621;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(244, 210, 220, 0.75) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(232, 201, 122, 0.28) 0%, transparent 42%),
+        radial-gradient(circle at 50% 85%, rgba(235, 195, 208, 0.55) 0%, transparent 50%),
+        linear-gradient(180deg, #FAF0F2 0%, #F5E3E8 50%, #F9EEF1 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    body.scroll-locked {
+      overflow: hidden;
+      height: 100vh;
+      touch-action: none;
+    }
+
+    /* Metallic Gold Text Effect */
+    .gold-foil-text {
+      background: linear-gradient(135deg, #B58C26 0%, #EED58C 35%, #D4AF37 55%, #F6E6B4 78%, #A97E1B 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Phone-width luxury wrapper on desktop, edge-to-edge on mobile */
+    .invite-shell {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 250, 251, 0.96) 0%, rgba(252, 241, 244, 0.95) 55%, rgba(248, 233, 238, 0.97) 100%);
+      box-shadow: 0 24px 80px rgba(74, 11, 28, 0.16), 0 0 0 1px rgba(212, 175, 55, 0.22);
+      overflow-x: hidden;
+    }
+
+    @media (max-width: 480px) {
+      .invite-shell {
+        max-width: 100%;
+        box-shadow: none;
+      }
+    }
+
+    /* =========================================================
+       ACT 1: 3D HARDCOVER BOOK COVER REVEAL
+       ========================================================= */
+    #book-overlay {
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255, 248, 250, 0.96) 0%, rgba(247, 224, 231, 0.96) 55%, rgba(235, 202, 213, 0.98) 100%);
+    }
+
+    .book-scene {
+      perspective: 1600px;
+      perspective-origin: 50% 48%;
+    }
+
+    .book-wrapper {
+      position: relative;
+      width: min(76vw, 292px);
+      aspect-ratio: 3 / 4.15;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Stacked ivory inner page behind front cover */
+    .book-inner-page {
+      position: absolute;
+      inset: 3px 0 3px 6px;
+      border-radius: 6px 14px 14px 6px;
+      background: linear-gradient(135deg, #FFFDF9 0%, #FDF4F6 60%, #F7E8EC 100%);
+      box-shadow:
+        inset 12px 0 20px rgba(74, 11, 28, 0.12),
+        4px 6px 0 -1px #F3E4E8,
+        7px 9px 0 -2px #E8D5DA,
+        14px 26px 46px rgba(58, 12, 25, 0.34);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      transform: translateZ(-2px);
+    }
+
+    /* Front leather-textured royal burgundy cover */
+    .book-cover-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 6px 16px 16px 6px;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(168, 43, 76, 0.42) 0%, transparent 55%),
+        radial-gradient(circle at 80% 85%, rgba(40, 4, 15, 0.65) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 2px, transparent 2px, transparent 5px),
+        linear-gradient(155deg, #7A1632 0%, #5D0E24 48%, #410718 100%);
+      box-shadow:
+        inset 14px 0 18px rgba(0, 0, 0, 0.35),
+        inset 2px 0 0 rgba(232, 201, 122, 0.35),
+        inset -2px 0 4px rgba(255, 232, 170, 0.2),
+        0 20px 44px rgba(58, 10, 24, 0.38);
+    }
+
+    /* Spine indentation groove */
+    .book-spine-groove {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 14px;
+      width: 3px;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.42), rgba(232, 201, 122, 0.22), transparent);
+    }
+
+    /* Back side of front cover (seen as it flips open) */
+    .book-cover-inside {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px 6px 6px 16px;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      background: linear-gradient(135deg, #FBF2F4 0%, #F4E1E6 100%);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: inset -10px 0 20px rgba(74, 11, 28, 0.12);
+    }
+
+    @keyframes tapPulseRing {
+      0% { transform: scale(0.85); opacity: 0.75; }
+      70% { transform: scale(1.65); opacity: 0; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+    .tap-pulse-ring {
+      animation: tapPulseRing 2.1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    /* =========================================================
+       ACT 2: ARCHITECTURAL ARCHED HERO CARD
+       ========================================================= */
+    .arch-card {
+      border-radius: 220px 220px 32px 32px;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.94) 0%, rgba(253, 244, 246, 0.9) 55%, rgba(246, 229, 234, 0.88) 100%);
+      box-shadow:
+        0 20px 55px rgba(107, 18, 42, 0.09),
+        inset 0 0 0 1px rgba(212, 175, 55, 0.36);
+    }
+
+    .arch-inner-frame {
+      border-radius: 210px 210px 24px 24px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.65; }
+      50% { transform: translateY(6px); opacity: 1; }
+    }
+    .scroll-cue-bounce {
+      animation: gentleBounce 2s ease-in-out infinite;
+    }
+
+    /* =========================================================
+       ACT 3: PULL TO REVEAL PARCHMENT SCROLL & TASSEL
+       ========================================================= */
+    .scroll-rod {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg,
+        #F7E7B7 0%,
+        #E8C97A 26%,
+        #C79A2C 58%,
+        #8F6812 86%,
+        #C99D30 100%
+      );
+      box-shadow:
+        0 6px 14px rgba(74, 11, 28, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.75);
+      position: relative;
+      z-index: 5;
+    }
+
+    .scroll-finial {
+      width: 24px;
+      height: 26px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 35% 30%, #FFF3CE 0%, #E2BE63 38%, #A67B1D 80%, #7B560E 100%);
+      box-shadow: 0 4px 10px rgba(74, 11, 28, 0.25);
+    }
+
+    .scroll-parchment {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 253, 248, 0.98) 0%, rgba(253, 246, 238, 0.96) 55%, rgba(246, 233, 224, 0.96) 100%);
+      box-shadow:
+        inset 0 12px 18px -10px rgba(107, 18, 42, 0.16),
+        inset 0 -12px 18px -10px rgba(107, 18, 42, 0.14),
+        0 14px 32px rgba(74, 11, 28, 0.1);
+      border-left: 1px solid rgba(212, 175, 55, 0.45);
+      border-right: 1px solid rgba(212, 175, 55, 0.45);
+      overflow: hidden;
+      height: 0px;
+      will-change: height;
+    }
+
+    @keyframes tasselSway {
+      0%, 100% { transform: rotate(-3.2deg); }
+      50% { transform: rotate(3.2deg); }
+    }
+    .tassel-sway {
+      transform-origin: top center;
+      animation: tasselSway 3.1s ease-in-out infinite;
+    }
+    .tassel-dragging {
+      animation: none !important;
+    }
+
+    /* =========================================================
+       ACT 4: SWIPEABLE GOLDEN MOMENTS CARD STACK
+       ========================================================= */
+    .carousel-stage {
+      position: relative;
+      height: 392px;
+      perspective: 1100px;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .event-card {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: min(78%, 296px);
+      height: 368px;
+      margin-left: calc(min(78%, 296px) / -2);
+      border-radius: 26px;
+      background: #FFFFFF;
+      box-shadow: 0 18px 42px rgba(74, 11, 28, 0.14), 0 0 0 1px rgba(212, 175, 55, 0.25);
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease, filter 0.45s ease;
+      will-change: transform, opacity;
+      overflow: hidden;
+      cursor: grab;
+    }
+    .event-card:active {
+      cursor: grabbing;
+    }
+    .event-card.dragging {
+      transition: none !important;
+    }
+
+    /* =========================================================
+       ACT 5: ROYAL BURGUNDY SHOWCASE CARD & TWINKLING STARS
+       ========================================================= */
+    .burgundy-showcase {
+      background:
+        radial-gradient(circle at 20% 12%, rgba(164, 42, 74, 0.48) 0%, transparent 50%),
+        radial-gradient(circle at 82% 88%, rgba(36, 3, 13, 0.72) 0%, transparent 55%),
+        linear-gradient(160deg, #6E132C 0%, #520B20 52%, #3A0615 100%);
+      box-shadow: 0 22px 54px rgba(58, 9, 23, 0.28);
+    }
+
+    @keyframes twinkleStar {
+      0%, 100% { opacity: 0.25; transform: scale(0.75); }
+      50% { opacity: 0.95; transform: scale(1.2); }
+    }
+    .star-twinkle {
+      animation: twinkleStar var(--dur, 2.8s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    /* =========================================================
+       ACT 6: VECTOR MAP ANIMATED ROUTE & PULSING PIN
+       ========================================================= */
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -28; }
+    }
+    .route-dash {
+      animation: dashFlow 1.6s linear infinite;
+    }
+
+    @keyframes pinPulse {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(2.15); opacity: 0; }
+    }
+    .map-pin-pulse {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: pinPulse 2s ease-out infinite;
+    }
+
+    /* =========================================================
+       AMBIENT MUSIC EQUALIZER BARS
+       ========================================================= */
+    @keyframes eqBar {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .eq-bar {
+      width: 2.5px;
+      border-radius: 99px;
+      background: #E8C97A;
+      animation: eqBar 0.9s ease-in-out infinite;
+    }
+    .eq-bar:nth-child(2) { animation-delay: 0.2s; animation-duration: 0.75s; }
+    .eq-bar:nth-child(3) { animation-delay: 0.4s; animation-duration: 1.05s; }
+    .eq-bar:nth-child(4) { animation-delay: 0.15s; animation-duration: 0.85s; }
+  </style>
+</head>
+<body class="scroll-locked antialiased selection:bg-burgundy selection:text-white">
+
+  <!-- =========================================================
+       CONTINUOUS FLOATING ROSE PETALS & GOLD SHIMMER CANVAS
+       ========================================================= -->
+  <canvas id="petal-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-20" aria-hidden="true"></canvas>
+
+  <!-- =========================================================
+       FLOATING AMBIENT AUDIO TOGGLE BUTTON (Web Audio API)
+       ========================================================= -->
+  <button
+    id="audio-toggle"
+    type="button"
+    aria-label="Toggle ambient music"
+    title="Toggle ambient music"
+    class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full flex items-center justify-center bg-burgundy-deep/90 backdrop-blur-md border border-champagne/60 shadow-xl shadow-burgundy-deep/30 text-champagne-light active:scale-95 transition-transform duration-200 hover:bg-burgundy"
+  >
+    <!-- Paused Icon -->
+    <svg id="audio-icon-off" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"></path>
+      <circle cx="6" cy="18" r="3"></circle>
+      <circle cx="18" cy="16" r="3"></circle>
+      <line x1="3" y1="3" x2="21" y2="21" class="opacity-80"></line>
+    </svg>
+    <!-- Playing Equalizer -->
+    <div id="audio-icon-on" class="hidden items-end gap-[3px] h-4">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+  </button>
+
+  <!-- =========================================================
+       CUSTOM TOAST NOTIFICATION (Replaces alert/confirm)
+       ========================================================= -->
+  <div
+    id="toast-banner"
+    role="status"
+    aria-live="polite"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-[70] pointer-events-none opacity-0 -translate-y-4 transition-all duration-300"
+  >
+    <div class="px-5 py-2.5 rounded-full bg-burgundy-deep/95 text-champagne-pale border border-champagne/50 shadow-2xl text-xs font-medium tracking-wide flex items-center gap-2 whitespace-nowrap backdrop-blur-md">
+      <svg class="w-4 h-4 text-champagne-light shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toast-message">Done</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ACT 1: 3D HARDCOVER BOOK COVER REVEAL (FULL-SCREEN OVERLAY)
+       ========================================================= -->
+  <div id="book-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center px-6 py-8">
+    <!-- Subtle decorative blurred floral glows -->
+    <div class="pointer-events-none absolute top-12 left-10 w-44 h-44 rounded-full bg-blush-rose/25 blur-3xl"></div>
+    <div class="pointer-events-none absolute bottom-16 right-10 w-52 h-52 rounded-full bg-champagne/20 blur-3xl"></div>
+
+    <!-- Top Bismillah whisper -->
+    <p id="book-top-caption" class="font-serif italic text-burgundy/75 text-sm tracking-widest mb-5 text-center">
+      Bismillah-ir-Rahman-ir-Rahim
+    </p>
+
+    <!-- 3D Book Stage -->
+    <div class="book-scene">
+      <div id="invite-book" class="book-wrapper" role="button" tabindex="0" aria-label="Tap the book to open the Nikah invitation">
+        <!-- Inner Ivory First Page (revealed as cover turns) -->
+        <div class="book-inner-page flex flex-col items-center justify-center p-6 text-center">
+          <div class="w-full h-full rounded-xl border border-champagne/40 flex flex-col items-center justify-center px-4">
+            <svg class="w-9 h-9 text-champagne-deep/80 mb-3" viewBox="0 0 48 48" fill="none">
+              <path d="M27.5 11.5C21 12.2 16 17.6 16 24.2C16 31.3 21.7 37 28.8 37C31.7 37 34.4 36 36.5 34.3C33.4 34.8 30.1 33.9 27.6 31.7C23.5 28.1 23 21.8 26.6 17.7C28.4 15.6 30.8 14.4 33.4 14.1C31.7 12.4 29.7 11.3 27.5 11.5Z" stroke="currentColor" stroke-width="1.6" fill="currentColor" fill-opacity="0.16"/>
+              <circle cx="33" cy="21" r="1.6" fill="currentColor"/>
+              <path d="M33 17V18.5M33 23.5V25M29 21H30.5M35.5 21H37" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <p class="font-serif italic text-xs text-burgundy/75 tracking-wider">In The Name of "Allah"</p>
+            <p class="font-display text-xl text-burgundy mt-2">Humera &amp; Aadil</p>
+            <p class="text-[10px] uppercase tracking-[0.25em] text-ink-muted mt-2">19 December 2026</p>
+          </div>
+        </div>
+
+        <!-- Front Hardcover Lid -->
+        <div id="book-cover-front" class="book-cover-front flex flex-col items-center justify-between p-5 text-center">
+          <div class="book-spine-groove"></div>
+
+          <!-- Ornate Double Gold Filigree SVG Border & Floral Corners -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 300 415" fill="none" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="goldBorderGrad" x1="0" y1="0" x2="300" y2="415" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F5DF9A"/>
+                <stop offset="50%" stop-color="#D4AF37"/>
+                <stop offset="100%" stop-color="#B08422"/>
+              </linearGradient>
+            </defs>
+            <!-- Outer gold frame -->
+            <rect x="20" y="16" width="264" height="383" rx="10" stroke="url(#goldBorderGrad)" stroke-width="1.4" stroke-opacity="0.9"/>
+            <!-- Inner hairline frame -->
+            <rect x="27" y="23" width="250" height="369" rx="6" stroke="url(#goldBorderGrad)" stroke-width="0.7" stroke-opacity="0.65"/>
+            <!-- Corner Filigree Flourishes -->
+            <!-- Top Left -->
+            <path d="M27 52 C27 33, 36 23, 55 23 M33 44 C33 34, 38 29, 48 29" stroke="url(#goldBorderGrad)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="38" cy="34" r="1.8" fill="#E8C97A"/>
+            <!-- Top Right -->
+            <path d="M277 52 C277 33, 268 23, 249 23 M271 44 C271 34, 266 29, 256 29" stroke="url(#goldBorderGrad)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="266" cy="34" r="1.8" fill="#E8C97A"/>
+            <!-- Bottom Left -->
+            <path d="M27 363 C27 382, 36 392, 55 392 M33 371 C33 381, 38 386, 48 386" stroke="url(#goldBorderGrad)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="38" cy="381" r="1.8" fill="#E8C97A"/>
+            <!-- Bottom Right -->
+            <path d="M277 363 C277 382, 268 392, 249 392 M271 371 C271 381, 266 386, 256 386" stroke="url(#goldBorderGrad)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="266" cy="381" r="1.8" fill="#E8C97A"/>
+          </svg>
+
+          <!-- Top Gold Accent -->
+          <div class="relative z-10 mt-5 pl-2">
+            <p class="text-[9px] uppercase tracking-[0.34em] text-champagne-light/85 font-medium">
+              In-Sha Allah
+            </p>
+          </div>
+
+          <!-- Center Circular Gold Emblem (H & A) -->
+          <div class="relative z-10 flex flex-col items-center pl-2 my-1">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 120 120" fill="none">
+                <circle cx="60" cy="60" r="54" stroke="#E8C97A" stroke-width="1.1" stroke-opacity="0.85"/>
+                <circle cx="60" cy="60" r="48" stroke="#D4AF37" stroke-width="0.7" stroke-dasharray="2.5 3.5" stroke-opacity="0.75"/>
+                <!-- Delicate top crescent -->
+                <path d="M62.5 12.5C59.2 12.8 56.8 15.5 56.8 18.7C56.8 22.1 59.5 24.8 62.9 24.8C64.4 24.8 65.8 24.2 66.8 23.3C65.2 23.6 63.5 23.1 62.2 22C60.2 20.2 60 17.1 61.8 15.1C62.7 14.1 63.9 13.5 65.2 13.4C64.4 12.7 63.5 12.4 62.5 12.5Z" fill="#E8C97A"/>
+                <!-- Bottom tiny floral diamond -->
+                <path d="M60 103 L63 106 L60 109 L57 106 Z" fill="#E8C97A"/>
+                <circle cx="52" cy="106" r="1.3" fill="#D4AF37"/>
+                <circle cx="68" cy="106" r="1.3" fill="#D4AF37"/>
+              </svg>
+              <span class="font-display text-[28px] tracking-wider gold-foil-text font-semibold select-none">
+                H <span class="font-serif italic text-xl font-normal">&amp;</span> A
+              </span>
+            </div>
+
+            <!-- Main Cover Titles -->
+            <div class="mt-5 space-y-1.5">
+              <h1 class="font-display text-[17px] tracking-[0.22em] gold-foil-text font-semibold uppercase">
+                Nikah Invitation
+              </h1>
+              <div class="flex items-center justify-center gap-2 opacity-75">
+                <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-champagne-light"></span>
+                <span class="w-1.5 h-1.5 rotate-45 bg-champagne-light"></span>
+                <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-champagne-light"></span>
+              </div>
+              <p class="text-[9.5px] tracking-[0.28em] text-champagne-pale/85 uppercase font-light pt-0.5">
+                A Wedding Invitation
+              </p>
+            </div>
+          </div>
+
+          <!-- Couple Name on Bottom of Cover -->
+          <div class="relative z-10 mb-5 pl-2">
+            <p class="font-serif italic text-[17px] text-champagne-pale tracking-wide">
+              Humera &amp; Hafeez Md. Aadil
+            </p>
+            <p class="text-[9px] tracking-[0.26em] text-champagne-light/70 uppercase mt-1">
+              19 · XII · 2026
+            </p>
+          </div>
+
+          <!-- Inside Face of Front Cover -->
+          <div class="book-cover-inside"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pulsing Tap Indicator -->
+    <button id="tap-open-btn" type="button" class="mt-9 flex flex-col items-center gap-3 group focus:outline-none">
+      <div class="relative w-12 h-12 flex items-center justify-center">
+        <span class="tap-pulse-ring absolute inset-0 rounded-full border-2 border-burgundy/45"></span>
+        <span class="tap-pulse-ring absolute inset-1.5 rounded-full border border-champagne/70" style="animation-delay: 0.55s;"></span>
+        <span class="relative w-6 h-6 rounded-full bg-burgundy border-2 border-champagne-light shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="w-2 h-2 rounded-full bg-champagne-pale"></span>
+        </span>
+      </div>
+      <span class="text-[11px] font-semibold tracking-[0.28em] text-burgundy uppercase">
+        Tap the Book to Open
+      </span>
+    </button>
+  </div>
+
+  <!-- =========================================================
+       MAIN SCROLLABLE INVITATION CONTAINER
+       ========================================================= -->
+  <div id="smooth-wrapper" class="relative z-10">
+    <main id="invite-main" class="invite-shell opacity-0">
+
+      <!-- =======================================================
+           ACT 2: ARCHED HERO INVITATION SECTION
+           ======================================================= -->
+      <section id="hero-section" class="relative px-4 pt-5 pb-10 min-h-[96vh] flex flex-col justify-center">
+        <div class="arch-card relative px-4 pt-4 pb-8 overflow-hidden">
+          <!-- Ornate Floral Vine Accents at Upper Arch Corners -->
+          <svg class="pointer-events-none absolute -top-1 -left-2 w-32 h-32 text-blush-rose/55" viewBox="0 0 140 140" fill="none">
+            <path d="M12 124 C18 76, 46 38, 108 14" stroke="#C79A3B" stroke-width="1" stroke-opacity="0.6"/>
+            <path d="M26 98 C16 86, 22 68, 36 74 C44 60, 62 58, 60 74 C72 68, 76 82, 62 90 C68 102, 52 108, 44 96 C34 106, 20 106, 26 98 Z" fill="#E8B8C5" fill-opacity="0.55"/>
+            <circle cx="46" cy="82" r="5" fill="#D4AF37" fill-opacity="0.55"/>
+            <path d="M62 46 C58 32, 74 24, 82 34 C94 26, 104 38, 94 48 C100 58, 86 64, 78 56 C70 62, 60 56, 62 46 Z" fill="#F2CFD8" fill-opacity="0.7"/>
+            <circle cx="78" cy="44" r="3.5" fill="#D4AF37" fill-opacity="0.65"/>
+            <ellipse cx="22" cy="54" rx="10" ry="4" transform="rotate(-35 22 54)" fill="#B8C4A8" fill-opacity="0.45"/>
+            <ellipse cx="96" cy="22" rx="9" ry="3.5" transform="rotate(-18 96 22)" fill="#B8C4A8" fill-opacity="0.45"/>
+          </svg>
+          <svg class="pointer-events-none absolute -top-1 -right-2 w-32 h-32 text-blush-rose/55 -scale-x-100" viewBox="0 0 140 140" fill="none">
+            <path d="M12 124 C18 76, 46 38, 108 14" stroke="#C79A3B" stroke-width="1" stroke-opacity="0.6"/>
+            <path d="M26 98 C16 86, 22 68, 36 74 C44 60, 62 58, 60 74 C72 68, 76 82, 62 90 C68 102, 52 108, 44 96 C34 106, 20 106, 26 98 Z" fill="#E8B8C5" fill-opacity="0.55"/>
+            <circle cx="46" cy="82" r="5" fill="#D4AF37" fill-opacity="0.55"/>
+            <path d="M62 46 C58 32, 74 24, 82 34 C94 26, 104 38, 94 48 C100 58, 86 64, 78 56 C70 62, 60 56, 62 46 Z" fill="#F2CFD8" fill-opacity="0.7"/>
+            <circle cx="78" cy="44" r="3.5" fill="#D4AF37" fill-opacity="0.65"/>
+            <ellipse cx="22" cy="54" rx="10" ry="4" transform="rotate(-35 22 54)" fill="#B8C4A8" fill-opacity="0.45"/>
+            <ellipse cx="96" cy="22" rx="9" ry="3.5" transform="rotate(-18 96 22)" fill="#B8C4A8" fill-opacity="0.45"/>
+          </svg>
+
+          <!-- Inner Gold Arch Frame -->
+          <div class="arch-inner-frame relative px-5 pt-11 pb-8 text-center flex flex-col items-center">
+            <!-- Top Circular Gold Monogram -->
+            <div class="hero-stagger w-16 h-16 rounded-full border border-champagne/75 bg-white/80 shadow-sm flex items-center justify-center relative">
+              <div class="absolute inset-1 rounded-full border border-dashed border-champagne/50"></div>
+              <span class="font-display text-lg font-semibold text-burgundy tracking-wider">
+                H<span class="font-serif italic text-champagne-deep mx-0.5">&amp;</span>A
+              </span>
+            </div>
+
+            <!-- Calligraphy Header -->
+            <div class="hero-stagger mt-5">
+              <p class="font-script text-[29px] leading-tight text-burgundy">
+                In The Name of &ldquo;Allah&rdquo;
+              </p>
+              <p class="font-serif italic text-[13px] text-ink-muted tracking-wide mt-0.5">
+                The Most Gracious and Most Merciful
+              </p>
+            </div>
+
+            <!-- Thin Gold Ornament -->
+            <div class="hero-stagger flex items-center justify-center gap-2.5 my-4 w-44">
+              <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-champagne/70 to-champagne"></span>
+              <svg class="w-3.5 h-3.5 text-champagne-deep" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+              </svg>
+              <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent via-champagne/70 to-champagne"></span>
+            </div>
+
+            <!-- Together With Their Families -->
+            <p class="hero-stagger text-[10px] uppercase tracking-[0.28em] text-burgundy/75 font-semibold">
+              Together With Their Families
+            </p>
+
+            <!-- Parents Invitation Copy -->
+            <p class="hero-stagger font-serif text-[15.5px] leading-relaxed text-ink mt-3 max-w-[310px]">
+              <span class="font-semibold text-burgundy">Haji Mohd. Hanif &amp; Mrs. Salma</span><br />
+              solicit your benign presence and blessings on the auspicious occasion of the Nikah Ceremony of their daughter
+            </p>
+
+            <!-- Bride Name -->
+            <div class="hero-stagger mt-6">
+              <h2 class="font-display text-[44px] leading-none text-burgundy font-semibold tracking-tight">
+                Humera
+              </h2>
+              <p class="text-[11px] text-ink-muted mt-2 tracking-wide leading-relaxed">
+                D/o. Haji Mohd. Hanif &middot; Grand D/o. Late Shabbir Ahamd
+              </p>
+            </div>
+
+            <!-- Decorative Gold Ampersand -->
+            <div class="hero-stagger my-3 flex items-center justify-center gap-3 w-36">
+              <span class="h-[1px] flex-1 bg-champagne/50"></span>
+              <span class="font-script text-[38px] leading-none gold-foil-text pr-1">&amp;</span>
+              <span class="h-[1px] flex-1 bg-champagne/50"></span>
+            </div>
+
+            <!-- Groom Name -->
+            <div class="hero-stagger">
+              <h2 class="font-display text-[34px] leading-tight text-burgundy font-semibold tracking-tight">
+                Hafeez Md. Aadil
+              </h2>
+              <p class="text-[11px] text-ink-muted mt-2 tracking-wide leading-relaxed">
+                S/o. Mr. Mohd. Aayub &middot; R/o. Ali Prem Garden, Pasonda
+              </p>
+            </div>
+
+            <!-- Subtle Date Pill -->
+            <div class="hero-stagger mt-6 px-4 py-1.5 rounded-full bg-blush-soft/85 border border-champagne/40 text-[11px] tracking-[0.2em] uppercase text-burgundy font-medium">
+              Saturday &middot; 19 December 2026
+            </div>
+
+            <!-- Animated Vertical Scroll Cue -->
+            <a href="#save-the-date-section" class="hero-stagger mt-8 flex flex-col items-center gap-1 text-burgundy/65 hover:text-burgundy transition-colors">
+              <span class="text-[9.5px] uppercase tracking-[0.3em] font-semibold">Scroll</span>
+              <div class="scroll-cue-bounce flex flex-col items-center -space-y-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                <svg class="w-4 h-4 opacity-55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           ACT 3: INTERACTIVE "PULL TO REVEAL" SAVE THE DATE SCROLL
+                  + LIVE COUNTDOWN + ADD TO CALENDAR
+           ======================================================= -->
+      <section id="save-the-date-section" class="reveal-section px-5 py-10 text-center relative">
+        <!-- Section Eyebrow & Heading -->
+        <p class="text-[10.5px] uppercase tracking-[0.3em] text-burgundy/70 font-semibold">
+          Save the Date
+        </p>
+        <h3 class="font-display text-[34px] text-burgundy mt-1 font-semibold">
+          Pull to Reveal
+        </h3>
+
+        <!-- Interactive Parchment Scroll Assembly -->
+        <div class="mt-7 mx-auto max-w-[336px] relative">
+          <!-- Top Golden Scroll Rod -->
+          <div class="flex items-center justify-center relative z-10">
+            <div class="scroll-finial -mr-1.5"></div>
+            <div class="scroll-rod flex-1"></div>
+            <div class="scroll-finial -ml-1.5"></div>
+          </div>
+
+          <!-- Expanding Parchment Sheet -->
+          <div id="scroll-parchment" class="scroll-parchment mx-5 relative">
+            <!-- Inner Decorative Gold Frame -->
+            <div id="scroll-inner-content" class="px-5 py-7 opacity-0 transition-opacity duration-300">
+              <div class="border border-champagne/50 rounded-xl px-4 py-6 bg-white/50 relative">
+                <!-- Subtle Corner Dots -->
+                <span class="absolute top-2 left-2 w-1.5 h-1.5 rounded-full bg-champagne"></span>
+                <span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-champagne"></span>
+                <span class="absolute bottom-2 left-2 w-1.5 h-1.5 rounded-full bg-champagne"></span>
+                <span class="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-champagne"></span>
+
+                <!-- Top Emblem -->
+                <svg class="w-7 h-7 mx-auto text-champagne-deep mb-2" viewBox="0 0 36 36" fill="none">
+                  <path d="M18 4L20.5 11.5L28 14L20.5 16.5L18 24L15.5 16.5L8 14L15.5 11.5L18 4Z" stroke="currentColor" stroke-width="1.3" fill="currentColor" fill-opacity="0.16"/>
+                  <circle cx="18" cy="29" r="1.5" fill="currentColor"/>
+                </svg>
+
+                <p class="text-[11px] uppercase tracking-[0.34em] text-ink-muted font-semibold">
+                  Saturday
+                </p>
+                <p class="font-display text-[70px] leading-none text-burgundy font-bold my-1.5">
+                  19
+                </p>
+                <p class="font-serif text-[26px] text-burgundy font-semibold tracking-wide">
+                  December 2026
+                </p>
+                <div class="w-16 h-[1px] bg-champagne/65 mx-auto my-3"></div>
+                <p class="text-[12px] text-ink-muted leading-relaxed font-medium">
+                  Nikah at 8:00 P.M.<br />
+                  <span class="text-burgundy/90">Pink Farm, Mundka, Delhi</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Golden Scroll Rod + Interactive Hanging Tassel -->
+          <div id="scroll-drag-handle" class="relative z-10 select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
+            <div class="flex items-center justify-center">
+              <div class="scroll-finial -mr-1.5"></div>
+              <div class="scroll-rod flex-1"></div>
+              <div class="scroll-finial -ml-1.5"></div>
+            </div>
+
+            <!-- Burgundy & Gold Hanging Tassel SVG -->
+            <div id="tassel-visual" class="tassel-sway flex flex-col items-center -mt-0.5 pt-0.5 pb-2">
+              <svg class="w-14 h-24 drop-shadow-md" viewBox="0 0 60 105" fill="none">
+                <!-- Braided Cord -->
+                <path d="M30 0 V28" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+                <path d="M30 4 V26" stroke="#7A1632" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <!-- Decorative Knot & Gold Bead -->
+                <circle cx="30" cy="30" r="6" fill="url(#tasselGold)"/>
+                <ellipse cx="30" cy="39" rx="7.5" ry="4.5" fill="#6B122A" stroke="#E8C97A" stroke-width="1.2"/>
+                <!-- Silk Fringe Threads -->
+                <path d="M23 42 L17 95" stroke="#6B122A" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M25.5 43 L22 98" stroke="#851A37" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M28 43 L26.5 100" stroke="#540C20" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M30 43 L30 101" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M32 43 L33.5 100" stroke="#540C20" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M34.5 43 L38 98" stroke="#851A37" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M37 42 L43 95" stroke="#6B122A" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Gold Collar Wrap -->
+                <rect x="22" y="42" width="16" height="4.5" rx="2" fill="url(#tasselGold)"/>
+                <defs>
+                  <linearGradient id="tasselGold" x1="22" y1="26" x2="38" y2="45" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#F7E6B0"/>
+                    <stop offset="50%" stop-color="#D4AF37"/>
+                    <stop offset="100%" stop-color="#9A7218"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Interactive Drag / Tap Hint -->
+          <div id="tassel-hint" class="mt-1 flex items-center justify-center gap-1.5 text-[11px] font-medium text-burgundy/80 tracking-wide">
+            <svg class="w-4 h-4 animate-bounce text-champagne-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+            <span>Drag down or tap tassel</span>
+          </div>
+        </div>
+
+        <!-- See You Pill -->
+        <div class="mt-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 border border-champagne/40 shadow-sm text-[12.5px] font-medium text-burgundy">
+          <span class="w-1.5 h-1.5 rounded-full bg-champagne"></span>
+          <span>See you on Saturday, 19 December 2026</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-champagne"></span>
+        </div>
+
+        <!-- Live Countdown Timer (Target: 2026-12-19T19:00:00+05:30 IST) -->
+        <div id="countdown-grid" class="mt-6 flex items-center justify-center gap-2.5 sm:gap-3.5">
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span id="cd-days" class="font-display text-[32px] leading-none text-burgundy font-semibold">00</span>
+            <span class="text-[9.5px] uppercase tracking-[0.2em] text-ink-muted mt-1.5 font-semibold">Days</span>
+          </div>
+          <span class="text-champagne text-lg font-serif -mt-4">&middot;</span>
+          <div class="flex flex-col items-center min-w-[54px]">
+            <span id="cd-hrs" class="font-display text-[32px] leading-none text-burgundy font-semibold">00</span>
+            <span class="text-[9.5px] uppercase tracking-[0.2em] text-ink-muted mt-1.5 font-semibold">Hrs</span>
+          </div>
+          <span class="text-champagne text-lg font-serif -mt-4">&middot;</span>
+          <div class="flex flex-col items-center min-w-[54px]">
+            <span id="cd-min" class="font-display text-[32px] leading-none text-burgundy font-semibold">00</span>
+            <span class="text-[9.5px] uppercase tracking-[0.2em] text-ink-muted mt-1.5 font-semibold">Min</span>
+          </div>
+          <span class="text-champagne text-lg font-serif -mt-4">&middot;</span>
+          <div class="flex flex-col items-center min-w-[54px]">
+            <span id="cd-sec" class="font-display text-[32px] leading-none text-burgundy font-semibold">00</span>
+            <span class="text-[9.5px] uppercase tracking-[0.2em] text-ink-muted mt-1.5 font-semibold">Sec</span>
+          </div>
+        </div>
+
+        <!-- Add To Calendar Button (.ics Generator) -->
+        <div class="mt-6">
+          <button
+            id="add-calendar-btn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-white/90 hover:bg-white border border-burgundy/25 hover:border-champagne text-burgundy text-[11.5px] font-semibold uppercase tracking-[0.2em] shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
+          >
+            <svg class="w-4 h-4 text-champagne-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Add to Calendar</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Decorative Divider -->
+      <div class="flex items-center justify-center gap-3 px-12 opacity-60">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-champagne"></span>
+        <span class="w-1.5 h-1.5 rotate-45 bg-champagne"></span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-champagne"></span>
+      </div>
+
+      <!-- =======================================================
+           ACT 4: SWIPEABLE "GOLDEN MOMENTS" PROGRAMME CAROUSEL
+           ======================================================= -->
+      <section id="programme-section" class="reveal-section py-11 text-center overflow-hidden">
+        <div class="px-5">
+          <p class="text-[10px] uppercase tracking-[0.3em] text-burgundy/70 font-semibold">
+            Swipe Through the Celebrations
+          </p>
+          <h3 class="font-display text-[34px] text-burgundy mt-1 font-semibold">
+            Golden Moments
+          </h3>
+          <p class="font-serif italic text-[15px] text-ink-muted mt-1">
+            &ldquo;In-Sha Allah&rdquo; &mdash; Saturday, 19th December, 2026
+          </p>
+        </div>
+
+        <!-- Interactive Card Stack Stage -->
+        <div id="carousel-stage" class="carousel-stage mt-7">
+          <!-- Card 1: Aamad Barat -->
+          <article class="event-card flex flex-col" data-index="0">
+            <div class="h-44 relative flex flex-col items-center justify-center p-5 overflow-hidden" style="background: linear-gradient(145deg, #F4B942 0%, #E08E2B 55%, #B8651B 100%);">
+              <!-- Soft radial glow -->
+              <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/20 blur-xl"></div>
+              <div class="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-black/15 to-transparent"></div>
+              <!-- Celebratory Lantern / Procession SVG Icon -->
+              <div class="relative w-20 h-20 rounded-full bg-white/95 shadow-lg flex items-center justify-center border-2 border-champagne-pale">
+                <svg class="w-11 h-11 text-amber-600" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="24" y1="4" x2="24" y2="9"/>
+                  <path d="M18 13C18 10.5 20.5 9 24 9C27.5 9 30 10.5 30 13H18Z" fill="#FDE68A"/>
+                  <path d="M15 17C15 14.5 19 13 24 13C29 13 33 14.5 33 17L31 33C31 35 28 37 24 37C20 37 17 35 17 33L15 17Z" fill="#FEF3C7"/>
+                  <path d="M24 19C26 22 26 26 24 28C22 26 22 22 24 19Z" fill="#D97706" stroke="none"/>
+                  <line x1="17" y1="37" x2="31" y2="37"/>
+                  <path d="M21 37V41M27 37V41M24 37V43"/>
+                  <circle cx="9" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+                  <circle cx="39" cy="20" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <span class="relative mt-2.5 text-[10px] uppercase tracking-[0.26em] text-white/95 font-semibold bg-black/15 px-3 py-0.5 rounded-full">
+                01 &middot; Arrival
+              </span>
+            </div>
+            <div class="flex-1 px-5 py-5 flex flex-col justify-between bg-white">
+              <div>
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.2em] text-amber-700">
+                  SAT &middot; 19 DEC &middot; 7:00 P.M.
+                </p>
+                <h4 class="font-display text-[26px] text-burgundy font-semibold mt-1">
+                  Aamad Barat
+                </h4>
+                <p class="text-[12px] text-ink-muted mt-1">
+                  Pink Farm, Mundka, Delhi
+                </p>
+              </div>
+              <div class="mt-3 px-3.5 py-2.5 rounded-2xl bg-amber-50/90 border border-amber-200/80 flex items-center gap-2.5 text-left">
+                <span class="w-3.5 h-3.5 rounded-full shrink-0 bg-gradient-to-br from-amber-400 to-orange-500 shadow-inner"></span>
+                <p class="text-[11.5px] font-medium text-amber-950 leading-snug">
+                  Warm welcome of the Baraat
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Nikah -->
+          <article class="event-card flex flex-col" data-index="1">
+            <div class="h-44 relative flex flex-col items-center justify-center p-5 overflow-hidden" style="background: linear-gradient(145deg, #136F52 0%, #0B4F3A 55%, #073326 100%);">
+              <div class="absolute -top-8 -left-8 w-36 h-36 rounded-full bg-champagne/25 blur-xl"></div>
+              <div class="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <!-- Islamic Dome & Crescent SVG Icon -->
+              <div class="relative w-20 h-20 rounded-full bg-white/95 shadow-lg flex items-center justify-center border-2 border-champagne-light">
+                <svg class="w-11 h-11 text-emerald-800" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M24 7C22.4 7.4 21.5 9.1 22.1 10.6C22.7 12.1 24.4 12.7 25.8 12C24.7 12.1 23.6 11.4 23.4 10.3C23.2 9.2 23.8 8 24.9 7.5C24.6 7.2 24.3 7 24 7Z" fill="#D4AF37" stroke="#D4AF37"/>
+                  <line x1="24" y1="12" x2="24" y2="15"/>
+                  <path d="M13 28C13 21 18 16 24 15C30 16 35 21 35 28H13Z" fill="#D1FAE5"/>
+                  <path d="M10 38V28H38V38" />
+                  <path d="M20 38V32C20 29.8 21.8 28 24 28C26.2 28 28 29.8 28 32V38" fill="#FEF3C7"/>
+                  <line x1="8" y1="38" x2="40" y2="38"/>
+                </svg>
+              </div>
+              <span class="relative mt-2.5 text-[10px] uppercase tracking-[0.26em] text-champagne-pale font-semibold bg-black/20 px-3 py-0.5 rounded-full">
+                02 &middot; Sacred Union
+              </span>
+            </div>
+            <div class="flex-1 px-5 py-5 flex flex-col justify-between bg-white">
+              <div>
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.2em] text-emerald-800">
+                  SAT &middot; 19 DEC &middot; 8:00 P.M.
+                </p>
+                <h4 class="font-display text-[26px] text-burgundy font-semibold mt-1">
+                  Nikah
+                </h4>
+                <p class="text-[12px] text-ink-muted mt-1">
+                  Pink Farm, Mundka, Delhi
+                </p>
+              </div>
+              <div class="mt-3 px-3.5 py-2.5 rounded-2xl bg-emerald-50/90 border border-emerald-200/80 flex items-center gap-2.5 text-left">
+                <span class="w-3.5 h-3.5 rounded-full shrink-0 bg-gradient-to-br from-emerald-600 to-champagne shadow-inner"></span>
+                <p class="text-[11.5px] font-medium text-emerald-950 leading-snug">
+                  The sacred Nikah ceremony
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Dinner -->
+          <article class="event-card flex flex-col" data-index="2">
+            <div class="h-44 relative flex flex-col items-center justify-center p-5 overflow-hidden" style="background: linear-gradient(145deg, #8F1D3D 0%, #6B122A 55%, #46091A 100%);">
+              <div class="absolute -top-6 -right-6 w-36 h-36 rounded-full bg-champagne/25 blur-xl"></div>
+              <div class="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <!-- Royal Banquet / Dastarkhwan Cloche SVG Icon -->
+              <div class="relative w-20 h-20 rounded-full bg-white/95 shadow-lg flex items-center justify-center border-2 border-champagne-light">
+                <svg class="w-11 h-11 text-burgundy" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="24" cy="14" r="2.2" fill="#D4AF37" stroke="#D4AF37"/>
+                  <path d="M10 31C10 23 16.2 16.5 24 16.5C31.8 16.5 38 23 38 31H10Z" fill="#FCE7F3"/>
+                  <path d="M7 31H41L38.5 35H9.5L7 31Z" fill="#F6E7BE"/>
+                  <path d="M17 11C17 9 18.5 8 18.5 6" stroke="#D4AF37"/>
+                  <path d="M24 9.5C24 7.5 25.5 6.5 25.5 4.5" stroke="#D4AF37"/>
+                  <path d="M31 11C31 9 32.5 8 32.5 6" stroke="#D4AF37"/>
+                </svg>
+              </div>
+              <span class="relative mt-2.5 text-[10px] uppercase tracking-[0.26em] text-champagne-pale font-semibold bg-black/20 px-3 py-0.5 rounded-full">
+                03 &middot; Dastarkhwan
+              </span>
+            </div>
+            <div class="flex-1 px-5 py-5 flex flex-col justify-between bg-white">
+              <div>
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.2em] text-burgundy">
+                  SAT &middot; 19 DEC &middot; 9:00 P.M.
+                </p>
+                <h4 class="font-display text-[26px] text-burgundy font-semibold mt-1">
+                  Dinner
+                </h4>
+                <p class="text-[12px] text-ink-muted mt-1">
+                  Pink Farm, Mundka, Delhi
+                </p>
+              </div>
+              <div class="mt-3 px-3.5 py-2.5 rounded-2xl bg-blush-soft/95 border border-blush-petal flex items-center gap-2.5 text-left">
+                <span class="w-3.5 h-3.5 rounded-full shrink-0 bg-gradient-to-br from-burgundy to-champagne shadow-inner"></span>
+                <p class="text-[11.5px] font-medium text-burgundy-deep leading-snug">
+                  Grand wedding feast
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Rukhsati -->
+          <article class="event-card flex flex-col" data-index="3">
+            <div class="h-44 relative flex flex-col items-center justify-center p-5 overflow-hidden" style="background: linear-gradient(145deg, #F0C7D2 0%, #DCA3B3 52%, #C98B9E 100%);">
+              <div class="absolute -bottom-8 -left-8 w-36 h-36 rounded-full bg-white/30 blur-xl"></div>
+              <div class="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-burgundy/15 to-transparent"></div>
+              <!-- Floral / Blessing Hands SVG Icon -->
+              <div class="relative w-20 h-20 rounded-full bg-white/95 shadow-lg flex items-center justify-center border-2 border-champagne-light">
+                <svg class="w-11 h-11 text-rose-700" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Blooming Rose & Blessing Sparkles -->
+                  <path d="M24 12C20 12 17 15 17 19C17 24 24 29 24 29C24 29 31 24 31 19C31 15 28 12 24 12Z" fill="#FCE7F3"/>
+                  <path d="M24 15C22 15 20.5 16.6 20.5 18.6C20.5 21 24 24 24 24C24 24 27.5 21 27.5 18.6C27.5 16.6 26 15 24 15Z" fill="#FBCFE8"/>
+                  <!-- Cupped Blessing Hands -->
+                  <path d="M10 31C12 28 16 28 19 31L23 35C23.6 35.6 24.4 35.6 25 35L29 31C32 28 36 28 38 31C36 36 30 39 24 39C18 39 12 36 10 31Z" fill="#FEF3C7"/>
+                  <path d="M24 6V8.5M14 10L16 12M34 10L32 12" stroke="#D4AF37" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <span class="relative mt-2.5 text-[10px] uppercase tracking-[0.26em] text-burgundy-deep font-semibold bg-white/60 px-3 py-0.5 rounded-full">
+                04 &middot; Farewell
+              </span>
+            </div>
+            <div class="flex-1 px-5 py-5 flex flex-col justify-between bg-white">
+              <div>
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.2em] text-rose-700">
+                  SAT &middot; 19 DEC &middot; 11:00 P.M.
+                </p>
+                <h4 class="font-display text-[26px] text-burgundy font-semibold mt-1">
+                  Rukhsati
+                </h4>
+                <p class="text-[12px] text-ink-muted mt-1">
+                  Pink Farm, Mundka, Delhi
+                </p>
+              </div>
+              <div class="mt-3 px-3.5 py-2.5 rounded-2xl bg-rose-50/95 border border-rose-200/80 flex items-center gap-2.5 text-left">
+                <span class="w-3.5 h-3.5 rounded-full shrink-0 bg-gradient-to-br from-rose-300 to-champagne shadow-inner"></span>
+                <p class="text-[11.5px] font-medium text-rose-950 leading-snug">
+                  Warm farewell with prayers &amp; blessings
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Carousel Navigation Controls & Pagination Dots -->
+        <div class="mt-3 flex items-center justify-center gap-5">
+          <button id="carousel-prev" type="button" aria-label="Previous ceremony" class="w-9 h-9 rounded-full bg-white/90 border border-champagne/45 text-burgundy flex items-center justify-center shadow-sm hover:bg-burgundy hover:text-champagne-pale active:scale-95 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div id="carousel-dots" class="flex items-center gap-2">
+            <button type="button" data-dot="0" aria-label="Go to Aamad Barat" class="h-2 rounded-full transition-all duration-300 w-6 bg-burgundy"></button>
+            <button type="button" data-dot="1" aria-label="Go to Nikah" class="h-2 rounded-full transition-all duration-300 w-2 bg-burgundy/25"></button>
+            <button type="button" data-dot="2" aria-label="Go to Dinner" class="h-2 rounded-full transition-all duration-300 w-2 bg-burgundy/25"></button>
+            <button type="button" data-dot="3" aria-label="Go to Rukhsati" class="h-2 rounded-full transition-all duration-300 w-2 bg-burgundy/25"></button>
+          </div>
+
+          <button id="carousel-next" type="button" aria-label="Next ceremony" class="w-9 h-9 rounded-full bg-white/90 border border-champagne/45 text-burgundy flex items-center justify-center shadow-sm hover:bg-burgundy hover:text-champagne-pale active:scale-95 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <p class="mt-3.5 text-[10px] uppercase tracking-[0.26em] text-ink-muted font-medium">
+          &lsaquo; &rsaquo; Swipe to See Every Function
+        </p>
+      </section>
+
+      <!-- =======================================================
+           ACT 5: DEEP BURGUNDY SHOWCASE CARD — FAMILY & LITTLE STARS
+           ======================================================= -->
+      <section id="family-section" class="reveal-section px-5 py-7">
+        <div class="burgundy-showcase relative rounded-[30px] p-3.5 text-center overflow-hidden">
+          <!-- Twinkling Golden Star Accents -->
+          <svg class="star-twinkle pointer-events-none absolute top-7 left-7 w-4 h-4 text-champagne-light" style="--dur:2.6s;--delay:0.2s;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z"/>
+          </svg>
+          <svg class="star-twinkle pointer-events-none absolute top-14 right-8 w-3.5 h-3.5 text-champagne-pale" style="--dur:3.2s;--delay:0.9s;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z"/>
+          </svg>
+          <svg class="star-twinkle pointer-events-none absolute bottom-16 left-9 w-3 h-3 text-champagne-light" style="--dur:2.9s;--delay:1.4s;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z"/>
+          </svg>
+          <svg class="star-twinkle pointer-events-none absolute bottom-10 right-10 w-4 h-4 text-champagne-light" style="--dur:3.5s;--delay:0.5s;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z"/>
+          </svg>
+
+          <!-- Double Inner Gold Border -->
+          <div class="rounded-[22px] border border-champagne/60 p-1.5">
+            <div class="rounded-[17px] border border-champagne/30 px-5 py-8 flex flex-col items-center">
+              <!-- Top Sparkling Little Stars Crest -->
+              <div class="flex items-center justify-center gap-2 text-champagne-light mb-3">
+                <svg class="w-3.5 h-3.5 opacity-75" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                <svg class="w-3.5 h-3.5 opacity-75" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+              </div>
+
+              <p class="text-[10px] uppercase tracking-[0.26em] text-champagne-light/85 font-semibold">
+                Special Invitation From Little Stars
+              </p>
+              <h4 class="font-display text-[24px] leading-snug gold-foil-text font-semibold mt-2">
+                Aaliya, Ayan, Shahzain &amp; Muntaha
+              </h4>
+
+              <!-- Gold Ornate Divider -->
+              <div class="flex items-center justify-center gap-2.5 my-6 w-48">
+                <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-champagne/70"></span>
+                <span class="w-2 h-2 rotate-45 border border-champagne-light"></span>
+                <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-champagne/70"></span>
+              </div>
+
+              <!-- Best Compliments -->
+              <p class="text-[10px] uppercase tracking-[0.26em] text-champagne-light/80 font-medium">
+                With Best Compliments From
+              </p>
+              <p class="font-serif text-[21px] text-champagne-pale font-medium mt-1.5">
+                All Siddiqui Family, Relatives &amp; Friends
+              </p>
+
+              <!-- Cordial Invitation From -->
+              <div class="mt-6 pt-5 border-t border-champagne/25 w-full">
+                <p class="text-[10px] uppercase tracking-[0.26em] text-champagne-light/80 font-medium">
+                  A Cordial Invitation From
+                </p>
+                <p class="font-display text-[20px] text-white font-medium mt-1.5">
+                  Haji Mohd. Hanif
+                </p>
+                <p class="text-[12px] text-champagne-pale/80 leading-relaxed mt-1 max-w-[280px] mx-auto">
+                  B-124, Main Budh Bazar Road, Phase-II, Nangloi, New Delhi-110041
+                </p>
+
+                <!-- Tappable Phone Chips -->
+                <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
+                  <a href="tel:+919717257836" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-champagne/25 border border-champagne/45 text-champagne-pale text-[11.5px] font-medium tracking-wide transition-colors">
+                    <svg class="w-3.5 h-3.5 text-champagne-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>9717257836</span>
+                  </a>
+                  <a href="tel:+919717585827" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-champagne/25 border border-champagne/45 text-champagne-pale text-[11.5px] font-medium tracking-wide transition-colors">
+                    <svg class="w-3.5 h-3.5 text-champagne-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>9717585827</span>
+                  </a>
+                  <a href="tel:+918447474683" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-champagne/25 border border-champagne/45 text-champagne-pale text-[11.5px] font-medium tracking-wide transition-colors">
+                    <svg class="w-3.5 h-3.5 text-champagne-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>8447474683</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           ACT 6: LOCATION — "HOW TO REACH"
+           ======================================================= -->
+      <section id="location-section" class="reveal-section px-5 py-10 text-center">
+        <p class="text-[10.5px] uppercase tracking-[0.3em] text-burgundy/70 font-semibold">
+          Location
+        </p>
+        <h3 class="font-display text-[34px] text-burgundy mt-1 font-semibold">
+          How to Reach
+        </h3>
+
+        <!-- Interactive Illustrated Vector Mini-Map Card -->
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Pink+Farm+Hiran+Kudna+Road+Opp+Pillar+No+626+Near+Ghevra+Metro+Station+Rohtak+Road+Mundka+Delhi+110041"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Pink Farm location in Google Maps"
+          class="group block mt-6 rounded-[26px] overflow-hidden border border-champagne/45 shadow-lg shadow-burgundy/10 relative bg-[#F8EFEA]"
+        >
+          <svg class="w-full h-56 block" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Soft Cartographic Background -->
+            <rect width="400" height="225" fill="#F8F0EC"/>
+            <!-- Stylized Green Lawn / Park Patches -->
+            <path d="M-10 25 C40 15, 78 40, 92 75 C72 100, 32 108, -10 92 Z" fill="#E3ECDD"/>
+            <path d="M275 130 C320 122, 365 136, 410 158 L410 235 L255 235 C252 195, 255 150, 275 130 Z" fill="#E3ECDD"/>
+            <ellipse cx="330" cy="48" rx="54" ry="28" fill="#E9EFE3"/>
+
+            <!-- Subtle Secondary Street Grid -->
+            <path d="M55 0 L80 225 M165 0 L150 225 M0 175 L400 155" stroke="#EADCD6" stroke-width="4"/>
+
+            <!-- Main Highway: Rohtak Road -->
+            <path d="M-10 152 Q125 134 220 128 T415 104" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+            <path d="M-10 152 Q125 134 220 128 T415 104" stroke="#E8D2C8" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+            <!-- Hiran Kudna Road branching north -->
+            <path d="M206 129 Q235 92 292 68" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+
+            <!-- Animated Dashed Burgundy Route Path -->
+            <path class="route-dash" d="M62 143 Q142 133 206 128 Q236 93 292 68" stroke="#6B122A" stroke-width="2.6" stroke-dasharray="7 7" stroke-linecap="round"/>
+
+            <!-- Ghevra Metro Station Marker -->
+            <g transform="translate(62, 143)">
+              <circle r="6" fill="#FFFFFF" stroke="#2D6A4F" stroke-width="2.5"/>
+              <rect x="-48" y="13" width="114" height="22" rx="11" fill="#FFFFFF" fill-opacity="0.94" stroke="#D4AF37" stroke-opacity="0.45"/>
+              <text x="9" y="27.5" text-anchor="middle" fill="#3B1621" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="600">Ghevra Metro Station</text>
+            </g>
+
+            <!-- Pillar No. 626 Landmark Tag -->
+            <g transform="translate(206, 128)">
+              <circle r="4.5" fill="#D4AF37"/>
+              <rect x="-42" y="12" width="84" height="19" rx="9.5" fill="#FFFFFF" fill-opacity="0.92" stroke="#6B122A" stroke-opacity="0.25"/>
+              <text x="0" y="24.5" text-anchor="middle" fill="#6D4753" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="600">Opp. Pillar No. 626</text>
+            </g>
+
+            <!-- Road Name Labels -->
+            <text x="128" y="124" transform="rotate(-5 128 124)" fill="#8E6C76" font-family="Plus Jakarta Sans, sans-serif" font-size="7.5" font-weight="700" letter-spacing="1.6">ROHTAK ROAD</text>
+            <text x="228" y="96" transform="rotate(-30 228 96)" fill="#8E6C76" font-family="Plus Jakarta Sans, sans-serif" font-size="7" font-weight="700" letter-spacing="1">HIRAN KUDNA RD</text>
+
+            <!-- Pulsing Destination Pin: Pink Farm -->
+            <g transform="translate(292, 68)">
+              <circle class="map-pin-pulse" r="16" fill="#6B122A" fill-opacity="0.3"/>
+              <path d="M0 -28 C-9.5 -28 -17 -20.5 -17 -11 C-17 0.5 0 10 0 10 C0 10 17 0.5 17 -11 C17 -20.5 9.5 -28 0 -28 Z" fill="#6B122A" stroke="#E8C97A" stroke-width="2"/>
+              <circle cx="0" cy="-11.5" r="5" fill="#FDF7F8"/>
+            </g>
+          </svg>
+
+          <!-- Floating Glassmorphic Destination Badge -->
+          <div class="absolute top-3.5 left-3.5 px-3.5 py-2 rounded-2xl bg-white/90 backdrop-blur-md border border-champagne/45 shadow-md text-left group-hover:scale-[1.02] transition-transform">
+            <p class="font-display text-[14px] font-semibold text-burgundy leading-tight">Pink Farm</p>
+            <p class="text-[10px] text-ink-muted font-medium mt-0.5 flex items-center gap-1">
+              <span>Tap to open in Maps</span>
+              <svg class="w-3 h-3 text-champagne-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </p>
+          </div>
+        </a>
+
+        <!-- Venue Details -->
+        <div class="mt-6">
+          <h4 class="font-display text-[26px] text-burgundy font-semibold tracking-wide">
+            PINK FARM
+          </h4>
+          <p class="text-[13px] text-ink-muted leading-relaxed mt-2 max-w-[330px] mx-auto">
+            Hiran Kudna Road, Opp. Pillar No. 626, Near Ghevra Metro Station, Rohtak Road, Mundka, Delhi-110041
+          </p>
+        </div>
+
+        <!-- Side-by-Side Action Buttons -->
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Pink+Farm+Hiran+Kudna+Road+Opp+Pillar+No+626+Near+Ghevra+Metro+Station+Rohtak+Road+Mundka+Delhi+110041"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 max-w-[185px] inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-burgundy hover:bg-burgundy-deep text-champagne-pale text-[11px] font-semibold uppercase tracking-[0.16em] shadow-md shadow-burgundy/25 active:scale-[0.98] transition-all"
+          >
+            <svg class="w-3.5 h-3.5 text-champagne-light shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+            <span>Get Directions</span>
+          </a>
+
+          <button
+            id="copy-address-btn"
+            type="button"
+            class="flex-1 max-w-[175px] inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-white/90 hover:bg-white border border-burgundy/30 text-burgundy text-[11px] font-semibold uppercase tracking-[0.16em] shadow-sm active:scale-[0.98] transition-all"
+          >
+            <svg class="w-3.5 h-3.5 text-champagne-deep shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy Address</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Decorative Divider -->
+      <div class="flex items-center justify-center gap-3 px-12 opacity-60">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-champagne"></span>
+        <span class="w-1.5 h-1.5 rotate-45 bg-champagne"></span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-champagne"></span>
+      </div>
+
+      <!-- =======================================================
+           ACT 7: KINDLY RESPOND (RSVP & BLESSINGS)
+           ======================================================= -->
+      <section id="rsvp-section" class="reveal-section px-5 pt-10 pb-14 text-center">
+        <p class="text-[10.5px] uppercase tracking-[0.3em] text-burgundy/70 font-semibold">
+          Kindly Respond
+        </p>
+        <h3 class="font-display text-[34px] text-burgundy mt-1 font-semibold">
+          Send Your Blessings
+        </h3>
+        <p class="font-serif italic text-[15px] text-ink-muted mt-1">
+          Your presence and heartfelt duas mean the world to us
+        </p>
+
+        <!-- RSVP Glass Card -->
+        <div class="mt-6 rounded-[28px] bg-white/85 backdrop-blur-md border border-champagne/45 shadow-xl shadow-burgundy/8 p-5 sm:p-6 text-left">
+          <!-- Form View -->
+          <form id="rsvp-form" class="space-y-4" novalidate>
+            <!-- Guest Name -->
+            <div>
+              <label for="rsvp-name" class="block text-[10.5px] uppercase tracking-[0.2em] text-burgundy/80 font-semibold mb-1.5">
+                Your Name
+              </label>
+              <input
+                id="rsvp-name"
+                type="text"
+                required
+                placeholder="e.g. Mohd. Tariq & Family"
+                class="w-full px-4 py-3 rounded-2xl bg-blush-ivory/85 border border-champagne/40 focus:border-burgundy focus:outline-none text-sm text-ink placeholder:text-ink-muted/50 transition-colors"
+              />
+            </div>
+
+            <!-- Attendance Toggle -->
+            <div>
+              <span class="block text-[10.5px] uppercase tracking-[0.2em] text-burgundy/80 font-semibold mb-1.5">
+                Will You Join Us?
+              </span>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button
+                  type="button"
+                  data-attend="Attending"
+                  class="attend-toggle-btn py-2.5 px-3 rounded-2xl border text-xs font-semibold transition-all bg-burgundy text-champagne-pale border-burgundy shadow-sm"
+                >
+                  Joyfully Attending
+                </button>
+                <button
+                  type="button"
+                  data-attend="Sending Duas"
+                  class="attend-toggle-btn py-2.5 px-3 rounded-2xl border text-xs font-semibold transition-all bg-blush-ivory/80 text-burgundy border-champagne/40 hover:border-burgundy/40"
+                >
+                  Sending Duas
+                </button>
+              </div>
+            </div>
+
+            <!-- Guest Count Selector -->
+            <div id="guest-count-wrapper" class="transition-opacity duration-200">
+              <span class="block text-[10.5px] uppercase tracking-[0.2em] text-burgundy/80 font-semibold mb-1.5">
+                Number of Guests
+              </span>
+              <div class="grid grid-cols-6 gap-1.5">
+                <button type="button" data-guests="1" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all">1</button>
+                <button type="button" data-guests="2" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-burgundy bg-burgundy text-champagne-pale transition-all">2</button>
+                <button type="button" data-guests="3" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all">3</button>
+                <button type="button" data-guests="4" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all">4</button>
+                <button type="button" data-guests="5" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all">5</button>
+                <button type="button" data-guests="6+" class="guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all">6+</button>
+              </div>
+            </div>
+
+            <!-- Short Blessing / Dua -->
+            <div>
+              <label for="rsvp-blessing" class="block text-[10.5px] uppercase tracking-[0.2em] text-burgundy/80 font-semibold mb-1.5">
+                Write a Blessing / Dua
+              </label>
+              <textarea
+                id="rsvp-blessing"
+                rows="3"
+                placeholder="May Allah bless Humera & Aadil with a lifetime of love, harmony, and barakah..."
+                class="w-full px-4 py-3 rounded-2xl bg-blush-ivory/85 border border-champagne/40 focus:border-burgundy focus:outline-none text-sm text-ink placeholder:text-ink-muted/50 resize-none transition-colors"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-burgundy-deep via-burgundy to-burgundy-soft text-champagne-pale text-xs font-semibold uppercase tracking-[0.22em] shadow-lg shadow-burgundy/25 hover:brightness-110 active:scale-[0.99] transition-all"
+            >
+              Confirm RSVP &amp; Blessings
+            </button>
+          </form>
+
+          <!-- Personalized Thank-You View (Shown After Submit) -->
+          <div id="rsvp-thanks" class="hidden text-center py-3">
+            <div class="w-14 h-14 mx-auto rounded-full bg-blush-soft border border-champagne/60 flex items-center justify-center text-burgundy mb-3">
+              <svg class="w-7 h-7 text-champagne-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.26em] text-champagne-deep font-semibold">
+              JazakAllah Khair
+            </p>
+            <h4 id="thanks-name" class="font-display text-2xl text-burgundy font-semibold mt-1">
+              Thank You!
+            </h4>
+            <p id="thanks-summary" class="text-[13px] text-ink-muted mt-2 leading-relaxed"></p>
+            <blockquote id="thanks-blessing-box" class="hidden mt-4 px-4 py-3 rounded-2xl bg-blush-ivory border border-champagne/35 font-serif italic text-[15px] text-burgundy"></blockquote>
+
+            <!-- Pre-filled WhatsApp Confirmation Button -->
+            <a
+              id="whatsapp-confirm-btn"
+              href="https://wa.me/919717257836"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-full bg-[#1F7A4D] hover:bg-[#19653F] text-white text-xs font-semibold uppercase tracking-[0.16em] shadow-md transition-colors"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.87 11.87 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42zM12.07 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.85 9.85 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89zm5.42-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.08 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+              </svg>
+              <span>Confirm on WhatsApp</span>
+            </a>
+
+            <button
+              id="rsvp-edit-btn"
+              type="button"
+              class="mt-3.5 text-[11px] font-medium text-burgundy/70 hover:text-burgundy underline underline-offset-4"
+            >
+              Edit Response
+            </button>
+          </div>
+        </div>
+
+        <!-- Luxury Footer Flourish -->
+        <footer class="mt-12 flex flex-col items-center">
+          <div class="w-11 h-11 rounded-full border border-champagne/60 bg-white/80 flex items-center justify-center text-burgundy font-display text-sm font-semibold">
+            H<span class="font-serif italic text-champagne-deep mx-0.5">&amp;</span>A
+          </div>
+          <p class="font-serif italic text-[17px] text-burgundy mt-3">
+            Humera &amp; Hafeez Md. Aadil
+          </p>
+          <p class="text-[10px] uppercase tracking-[0.28em] text-ink-muted mt-1">
+            19 December 2026 &middot; New Delhi
+          </p>
+        </footer>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =========================================================
+       APPLICATION JAVASCRIPT
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------------------------------------------------------
+         UTILITY: TOAST NOTIFICATION (Replaces alert/confirm)
+         --------------------------------------------------------- */
+      let toastTimeout = null;
+      function showToast(message) {
+        const banner = document.getElementById('toast-banner');
+        const textEl = document.getElementById('toast-message');
+        if (!banner || !textEl) return;
+        textEl.textContent = message;
+        banner.classList.remove('opacity-0', '-translate-y-4');
+        banner.classList.add('opacity-100', 'translate-y-0');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          banner.classList.remove('opacity-100', 'translate-y-0');
+          banner.classList.add('opacity-0', '-translate-y-4');
+        }, 2800);
+      }
+
+      /* ---------------------------------------------------------
+         1. FLOATING ROSE PETALS & GOLDEN SHIMMER CANVAS
+         --------------------------------------------------------- */
+      function initPetalCanvas() {
+        const canvas = document.getElementById('petal-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        const petals = [];
+        const sparkles = [];
+        const petalColors = [
+          'rgba(232, 169, 186, 0.58)',
+          'rgba(244, 198, 210, 0.62)',
+          'rgba(209, 128, 152, 0.45)',
+          'rgba(248, 220, 228, 0.68)'
+        ];
+
+        function resize() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function createPetal(randomY) {
+          return {
+            x: Math.random() * width,
+            y: randomY ? Math.random() * height : -20 - Math.random() * 40,
+            size: 5 + Math.random() * 7.5,
+            speedY: 0.35 + Math.random() * 0.65,
+            speedX: -0.25 + Math.random() * 0.5,
+            swayAmp: 0.35 + Math.random() * 0.75,
+            swayFreq: 0.008 + Math.random() * 0.015,
+            phase: Math.random() * Math.PI * 2,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpeed: -0.014 + Math.random() * 0.028,
+            flip: Math.random() * Math.PI,
+            flipSpeed: 0.012 + Math.random() * 0.02,
+            color: petalColors[Math.floor(Math.random() * petalColors.length)]
+          };
+        }
+
+        function createSparkle(randomY) {
+          return {
+            x: Math.random() * width,
+            y: randomY ? Math.random() * height : height + 10,
+            radius: 1 + Math.random() * 1.9,
+            speedY: -(0.12 + Math.random() * 0.28),
+            alphaPhase: Math.random() * Math.PI * 2,
+            alphaSpeed: 0.02 + Math.random() * 0.025
+          };
+        }
+
+        resize();
+        const petalCount = width < 600 ? 18 : 26;
+        const sparkleCount = width < 600 ? 16 : 24;
+
+        for (let i = 0; i < petalCount; i++) petals.push(createPetal(true));
+        for (let i = 0; i < sparkleCount; i++) sparkles.push(createSparkle(true));
+
+        window.addEventListener('resize', resize, { passive: true });
+
+        function drawPetal(p) {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.scale(1, 0.45 + 0.55 * Math.abs(Math.cos(p.flip)));
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.moveTo(0, -p.size);
+          ctx.bezierCurveTo(p.size * 0.9, -p.size * 0.6, p.size * 0.85, p.size * 0.7, 0, p.size);
+          ctx.bezierCurveTo(-p.size * 0.85, p.size * 0.7, -p.size * 0.9, -p.size * 0.6, 0, -p.size);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+
+          // Update & draw golden shimmer particles
+          for (let i = 0; i < sparkles.length; i++) {
+            const s = sparkles[i];
+            s.y += s.speedY;
+            s.alphaPhase += s.alphaSpeed;
+            if (s.y < -10) {
+              s.y = height + 10;
+              s.x = Math.random() * width;
+            }
+            const alpha = 0.14 + 0.42 * (0.5 + 0.5 * Math.sin(s.alphaPhase));
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(212, 175, 55, ${alpha.toFixed(3)})`;
+            ctx.fill();
+          }
+
+          // Update & draw drifting rose petals
+          for (let i = 0; i < petals.length; i++) {
+            const p = petals[i];
+            p.phase += p.swayFreq;
+            p.y += p.speedY;
+            p.x += p.speedX + Math.sin(p.phase) * p.swayAmp;
+            p.rotation += p.rotSpeed;
+            p.flip += p.flipSpeed;
+
+            if (p.y > height + 30 || p.x < -40 || p.x > width + 40) {
+              Object.assign(p, createPetal(false));
+            }
+            drawPetal(p);
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      /* ---------------------------------------------------------
+         2. AMBIENT SERENE HARP / PAD SYNTHESIZER (Web Audio API)
+         --------------------------------------------------------- */
+      function initAmbientAudio() {
+        const btn = document.getElementById('audio-toggle');
+        const iconOff = document.getElementById('audio-icon-off');
+        const iconOn = document.getElementById('audio-icon-on');
+        if (!btn) return;
+
+        let audioCtx = null;
+        let masterGain = null;
+        let isPlaying = false;
+        let stepTimer = null;
+        let stepIndex = 0;
+
+        // Warm, serene Fmaj9 / Dm9 / Bbmaj7 / C6 pentatonic-inspired harp frequencies
+        const chords = [
+          [174.61, 220.00, 261.63, 329.63, 392.00, 523.25], // Fmaj9
+          [146.83, 220.00, 261.63, 329.63, 349.23, 440.00], // Dm9
+          [116.54, 174.61, 220.00, 293.66, 349.23, 440.00], // Bbmaj7
+          [130.81, 196.00, 220.00, 261.63, 329.63, 392.00]  // C6
+        ];
+
+        function setupAudio() {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return false;
+          audioCtx = new AudioContextClass();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+          masterGain.connect(audioCtx.destination);
+          return true;
+        }
+
+        function playHarpNote(freq, duration, volume) {
+          if (!audioCtx || !masterGain) return;
+          const now = audioCtx.currentTime;
+
+          const osc = audioCtx.createOscillator();
+          const oscHarmonic = audioCtx.createOscillator();
+          const filter = audioCtx.createBiquadFilter();
+          const env = audioCtx.createGain();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+
+          oscHarmonic.type = 'sine';
+          oscHarmonic.frequency.setValueAtTime(freq * 2, now);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1400, now);
+          filter.frequency.exponentialRampToValueAtTime(420, now + duration);
+
+          env.gain.setValueAtTime(0.0001, now);
+          env.gain.linearRampToValueAtTime(volume, now + 0.06);
+          env.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+          const harmonicGain = audioCtx.createGain();
+          harmonicGain.gain.setValueAtTime(0.22, now);
+
+          osc.connect(filter);
+          oscHarmonic.connect(harmonicGain);
+          harmonicGain.connect(filter);
+          filter.connect(env);
+          env.connect(masterGain);
+
+          osc.start(now);
+          oscHarmonic.start(now);
+          osc.stop(now + duration + 0.05);
+          oscHarmonic.stop(now + duration + 0.05);
+        }
+
+        function playSoftPad(rootFreq) {
+          if (!audioCtx || !masterGain) return;
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const env = audioCtx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(rootFreq, now);
+
+          env.gain.setValueAtTime(0.0001, now);
+          env.gain.linearRampToValueAtTime(0.055, now + 1.4);
+          env.gain.exponentialRampToValueAtTime(0.0001, now + 4.4);
+
+          osc.connect(env);
+          env.connect(masterGain);
+          osc.start(now);
+          osc.stop(now + 4.6);
+        }
+
+        function scheduleStep() {
+          if (!isPlaying) return;
+          const chordIdx = Math.floor(stepIndex / 6) % chords.length;
+          const noteIdx = stepIndex % 6;
+          const chord = chords[chordIdx];
+
+          if (noteIdx === 0) {
+            playSoftPad(chord[0]);
+          }
+          playHarpNote(chord[noteIdx], 2.5, 0.085);
+          stepIndex++;
+        }
+
+        function startMusic() {
+          try {
+            if (!audioCtx && !setupAudio()) {
+              showToast('Audio not supported in this browser');
+              return;
+            }
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+            isPlaying = true;
+            masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0.85, audioCtx.currentTime + 0.5);
+
+            iconOff.classList.add('hidden');
+            iconOn.classList.remove('hidden');
+            iconOn.classList.add('flex');
+
+            scheduleStep();
+            stepTimer = setInterval(scheduleStep, 720);
+          } catch (err) {
+            console.warn('Audio init warning:', err);
+          }
+        }
+
+        function stopMusic() {
+          isPlaying = false;
+          clearInterval(stepTimer);
+          if (audioCtx && masterGain) {
+            masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
+          }
+          iconOn.classList.add('hidden');
+          iconOn.classList.remove('flex');
+          iconOff.classList.remove('hidden');
+        }
+
+        btn.addEventListener('click', () => {
+          if (isPlaying) {
+            stopMusic();
+          } else {
+            startMusic();
+          }
+        });
+      }
+
+      /* ---------------------------------------------------------
+         3. LOCOMOTIVE SCROLL V5 & GSAP SCROLLTRIGGER SETUP
+         --------------------------------------------------------- */
+      let locoInstance = null;
+
+      function initScrollExperience() {
+        // Safely register GSAP ScrollTrigger
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // Initialize Locomotive Scroll v5 safely on non-coarse pointers so mobile keeps native momentum
+        try {
+          const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+          if (typeof LocomotiveScroll !== 'undefined' && isFinePointer) {
+            locoInstance = new LocomotiveScroll({
+              lenisOptions: {
+                lerp: 0.085,
+                duration: 1.15,
+                smoothWheel: true,
+                wheelMultiplier: 0.95
+              }
+            });
+          }
+        } catch (err) {
+          // Graceful fallback to native scroll
+          console.warn('Locomotive Scroll fallback to native scroll:', err);
+        }
+
+        // ScrollTrigger staggered section reveals
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          document.querySelectorAll('.reveal-section').forEach((section) => {
+            gsap.fromTo(
+              section,
+              { opacity: 0, y: 34 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: section,
+                  start: 'top 86%',
+                  once: true
+                }
+              }
+            );
+          });
+          setTimeout(() => ScrollTrigger.refresh(), 250);
+        }
+      }
+
+      /* ---------------------------------------------------------
+         4. ACT 1: 3D HARDCOVER BOOK COVER REVEAL
+         --------------------------------------------------------- */
+      function initBookCoverReveal() {
+        const overlay = document.getElementById('book-overlay');
+        const book = document.getElementById('invite-book');
+        const coverFront = document.getElementById('book-cover-front');
+        const tapBtn = document.getElementById('tap-open-btn');
+        const topCaption = document.getElementById('book-top-caption');
+        const mainShell = document.getElementById('invite-main');
+        if (!overlay || !book || !coverFront || !mainShell) return;
+
+        let opened = false;
+
+        // Subtle idle floating motion for the hardcover book
+        let idleTween = null;
+        if (typeof gsap !== 'undefined') {
+          idleTween = gsap.to(book, {
+            y: -7,
+            duration: 2.3,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          });
+        }
+
+        function fireSoftPetalBurst() {
+          if (typeof confetti !== 'function') return;
+          confetti({
+            particleCount: 42,
+            spread: 75,
+            origin: { y: 0.55 },
+            colors: ['#D4AF37', '#E8C97A', '#F2B8C6', '#6B122A', '#FDF7F8'],
+            scalar: 0.9,
+            gravity: 0.65,
+            ticks: 180
+          });
+        }
+
+        function openBook() {
+          if (opened) return;
+          opened = true;
+          if (idleTween) idleTween.kill();
+
+          if (typeof gsap === 'undefined') {
+            overlay.style.display = 'none';
+            mainShell.style.opacity = '1';
+            document.body.classList.remove('scroll-locked');
+            initScrollExperience();
+            return;
+          }
+
+          const tl = gsap.timeline({
+            onComplete: () => {
+              overlay.style.display = 'none';
+              document.body.classList.remove('scroll-locked');
+              initScrollExperience();
+            }
+          });
+
+          // Hide tap prompt & top whisper
+          tl.to([tapBtn, topCaption], {
+            opacity: 0,
+            y: 12,
+            duration: 0.35,
+            ease: 'power2.in'
+          }, 0);
+
+          // 3D perspective book cover opens smoothly
+          tl.to(coverFront, {
+            rotateY: -138,
+            duration: 1.05,
+            ease: 'power3.inOut'
+          }, 0.1);
+
+          // Soft petal & gold burst as cover opens
+          tl.add(fireSoftPetalBurst, 0.52);
+
+          // Zoom book forward & crossfade into Hero Invitation
+          tl.to(book, {
+            scale: 1.18,
+            x: 16,
+            duration: 0.85,
+            ease: 'power2.in'
+          }, 0.65);
+
+          tl.to(overlay, {
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power2.out'
+          }, 0.85);
+
+          tl.to(mainShell, {
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out'
+          }, 0.82);
+
+          // Staggered Hero Typography Entrance
+          tl.fromTo(
+            '.hero-stagger',
+            { opacity: 0, y: 22 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.78,
+              stagger: 0.085,
+              ease: 'power3.out'
+            },
+            0.98
+          );
+        }
+
+        book.addEventListener('click', openBook);
+        if (tapBtn) tapBtn.addEventListener('click', openBook);
+        book.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openBook();
+          }
+        });
+      }
+
+      /* ---------------------------------------------------------
+         5. ACT 3: INTERACTIVE "PULL TO REVEAL" SCROLL + CONFETTI
+         --------------------------------------------------------- */
+      function initPullToRevealScroll() {
+        const parchment = document.getElementById('scroll-parchment');
+        const innerContent = document.getElementById('scroll-inner-content');
+        const handle = document.getElementById('scroll-drag-handle');
+        const tasselVisual = document.getElementById('tassel-visual');
+        const hint = document.getElementById('tassel-hint');
+        if (!parchment || !innerContent || !handle) return;
+
+        let isRevealed = false;
+        let isDragging = false;
+        let startY = 0;
+        let currentProgress = 0;
+        let targetHeight = 310;
+
+        // Measure full natural content height accurately
+        function measureTargetHeight() {
+          const prevHeight = parchment.style.height;
+          parchment.style.height = 'auto';
+          const measured = parchment.scrollHeight;
+          parchment.style.height = prevHeight;
+          targetHeight = Math.max(measured, 285);
+        }
+
+        function fireCelebrationConfetti() {
+          if (typeof confetti !== 'function') return;
+          const colors = ['#D4AF37', '#E8C97A', '#F3B6C6', '#6B122A', '#FFF4F7'];
+          confetti({
+            particleCount: 55,
+            angle: 60,
+            spread: 60,
+            origin: { x: 0.15, y: 0.6 },
+            colors
+          });
+          confetti({
+            particleCount: 55,
+            angle: 120,
+            spread: 60,
+            origin: { x: 0.85, y: 0.6 },
+            colors
+          });
+          setTimeout(() => {
+            confetti({
+              particleCount: 40,
+              spread: 95,
+              origin: { x: 0.5, y: 0.52 },
+              colors,
+              scalar: 0.95
+            });
+          }, 180);
+        }
+
+        function completeReveal() {
+          if (isRevealed) return;
+          isRevealed = true;
+          measureTargetHeight();
+          tasselVisual.classList.remove('tassel-dragging');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.to(parchment, {
+              height: targetHeight,
+              duration: 0.95,
+              ease: 'power3.out',
+              onComplete: () => {
+                parchment.style.height = 'auto';
+                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+              }
+            });
+            gsap.to(innerContent, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              delay: 0.15,
+              ease: 'power2.out'
+            });
+            if (hint) {
+              gsap.to(hint, {
+                opacity: 0,
+                height: 0,
+                marginTop: 0,
+                duration: 0.35,
+                onComplete: () => { hint.style.display = 'none'; }
+              });
+            }
+          } else {
+            parchment.style.height = 'auto';
+            innerContent.style.opacity = '1';
+            if (hint) hint.style.display = 'none';
+          }
+
+          fireCelebrationConfetti();
+        }
+
+        function snapBackClosed() {
+          currentProgress = 0;
+          if (typeof gsap !== 'undefined') {
+            gsap.to(parchment, {
+              height: 0,
+              duration: 0.65,
+              ease: 'elastic.out(1, 0.55)'
+            });
+            gsap.to(innerContent, {
+              opacity: 0,
+              duration: 0.25
+            });
+          } else {
+            parchment.style.height = '0px';
+            innerContent.style.opacity = '0';
+          }
+        }
+
+        // Pointer Events support both touch dragging & mouse dragging seamlessly
+        handle.addEventListener('pointerdown', (e) => {
+          if (isRevealed) return;
+          measureTargetHeight();
+          isDragging = true;
+          startY = e.clientY;
+          currentProgress = 0;
+          tasselVisual.classList.add('tassel-dragging');
+          if (handle.setPointerCapture) {
+            try { handle.setPointerCapture(e.pointerId); } catch (_) {}
+          }
+        });
+
+        handle.addEventListener('pointermove', (e) => {
+          if (!isDragging || isRevealed) return;
+          const deltaY = Math.max(0, e.clientY - startY);
+          const dragSpan = 210;
+          currentProgress = Math.min(1, deltaY / dragSpan);
+
+          parchment.style.height = `${(currentProgress * targetHeight).toFixed(1)}px`;
+          innerContent.style.opacity = Math.min(1, currentProgress * 1.35).toFixed(2);
+
+          if (currentProgress >= 0.88) {
+            isDragging = false;
+            completeReveal();
+          }
+        });
+
+        function finishPointer(e) {
+          if (!isDragging || isRevealed) return;
+          isDragging = false;
+          tasselVisual.classList.remove('tassel-dragging');
+          const deltaY = Math.max(0, e.clientY - startY);
+
+          // Single tap (< 14px movement) OR dragged beyond 36% unlocks full reveal
+          if (deltaY < 14 || currentProgress >= 0.36) {
+            completeReveal();
+          } else {
+            snapBackClosed();
+          }
+        }
+
+        handle.addEventListener('pointerup', finishPointer);
+        handle.addEventListener('pointercancel', finishPointer);
+      }
+
+      /* ---------------------------------------------------------
+         6. LIVE COUNTDOWN TIMER (Target: 19 Dec 2026, 7:00 PM IST)
+         --------------------------------------------------------- */
+      function initCountdown() {
+        const targetTime = new Date('2026-12-19T19:00:00+05:30').getTime();
+        const elDays = document.getElementById('cd-days');
+        const elHrs = document.getElementById('cd-hrs');
+        const elMin = document.getElementById('cd-min');
+        const elSec = document.getElementById('cd-sec');
+        if (!elDays || !elHrs || !elMin || !elSec) return;
+
+        function pad(n) {
+          return String(Math.max(0, n)).padStart(2, '0');
+        }
+
+        function update() {
+          const diff = targetTime - Date.now();
+          if (diff <= 0) {
+            elDays.textContent = '00';
+            elHrs.textContent = '00';
+            elMin.textContent = '00';
+            elSec.textContent = '00';
+            return;
+          }
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const min = Math.floor((diff / (1000 * 60)) % 60);
+          const sec = Math.floor((diff / 1000) % 60);
+
+          elDays.textContent = pad(days);
+          elHrs.textContent = pad(hrs);
+          elMin.textContent = pad(min);
+          elSec.textContent = pad(sec);
+        }
+
+        update();
+        setInterval(update, 1000);
+      }
+
+      /* ---------------------------------------------------------
+         7. ADD TO CALENDAR (.ics FILE DOWNLOAD)
+         --------------------------------------------------------- */
+      function initCalendarExport() {
+        const btn = document.getElementById('add-calendar-btn');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+          try {
+            // Saturday, 19 Dec 2026: 7:00 PM IST (13:30 UTC) to 11:30 PM IST (18:00 UTC)
+            const icsLines = [
+              'BEGIN:VCALENDAR',
+              'VERSION:2.0',
+              'PRODID:-//Humera & Hafeez Md Aadil//Nikah Invitation//EN',
+              'CALSCALE:GREGORIAN',
+              'METHOD:PUBLISH',
+              'BEGIN:VEVENT',
+              'UID:humera-aadil-nikah-20261219@nikahinvite.local',
+              'DTSTAMP:20261124T180000Z',
+              'DTSTART:20261219T133000Z',
+              'DTEND:20261219T180000Z',
+              'SUMMARY:Nikah Ceremony: Humera & Hafeez Md. Aadil',
+              'DESCRIPTION:In-Sha Allah — Aamad Barat at 7:00 PM, Nikah at 8:00 PM, Dinner at 9:00 PM, Rukhsati at 11:00 PM. Hosted by Haji Mohd. Hanif & Mrs. Salma.',
+              'LOCATION:Pink Farm, Hiran Kudna Road, Opp. Pillar No. 626, Near Ghevra Metro Station, Rohtak Road, Mundka, Delhi-110041',
+              'END:VEVENT',
+              'END:VCALENDAR'
+            ];
+
+            const blob = new Blob([icsLines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Humera-and-Hafeez-Md-Aadil-Nikah.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+            showToast('Calendar invite (.ics) downloaded!');
+          } catch (err) {
+            console.error('ICS export error:', err);
+            showToast('Could not export calendar file.');
+          }
+        });
+      }
+
+      /* ---------------------------------------------------------
+         8. ACT 4: SWIPEABLE "GOLDEN MOMENTS" CARD STACK CAROUSEL
+         --------------------------------------------------------- */
+      function initProgrammeCarousel() {
+        const stage = document.getElementById('carousel-stage');
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        const dots = Array.from(document.querySelectorAll('#carousel-dots [data-dot]'));
+        if (!stage) return;
+
+        const cards = Array.from(stage.querySelectorAll('.event-card'));
+        const total = cards.length;
+        let activeIndex = 0;
+
+        // Drag state
+        let dragging = false;
+        let startX = 0;
+        let startY = 0;
+        let dragOffsetX = 0;
+        let isHorizontalLock = null;
+
+        function getCircularOffset(index) {
+          let diff = index - activeIndex;
+          if (diff > total / 2) diff -= total;
+          if (diff < -total / 2) diff += total;
+          return diff;
+        }
+
+        function render(extraDragPx = 0) {
+          cards.forEach((card, i) => {
+            const offset = getCircularOffset(i);
+            const dragShift = extraDragPx * (offset === 0 ? 1 : 0.45);
+            const x = offset * 175 + dragShift;
+            const absOffset = Math.abs(offset);
+
+            if (absOffset === 0) {
+              const tilt = (extraDragPx / 260) * 6;
+              card.style.transform = `translate3d(${x}px, 0px, 0px) scale(1) rotate(${tilt.toFixed(2)}deg)`;
+              card.style.opacity = '1';
+              card.style.zIndex = '30';
+              card.style.filter = 'none';
+            } else if (absOffset === 1) {
+              const rot = offset < 0 ? -4.5 : 4.5;
+              card.style.transform = `translate3d(${x}px, 16px, -60px) scale(0.86) rotate(${rot}deg)`;
+              card.style.opacity = '0.58';
+              card.style.zIndex = '20';
+              card.style.filter = 'blur(0.4px)';
+            } else {
+              card.style.transform = `translate3d(${offset * 110}px, 28px, -120px) scale(0.75)`;
+              card.style.opacity = '0';
+              card.style.zIndex = '10';
+              card.style.filter = 'blur(1px)';
+            }
+          });
+
+          dots.forEach((dot, i) => {
+            if (i === activeIndex) {
+              dot.classList.remove('w-2', 'bg-burgundy/25');
+              dot.classList.add('w-6', 'bg-burgundy');
+            } else {
+              dot.classList.remove('w-6', 'bg-burgundy');
+              dot.classList.add('w-2', 'bg-burgundy/25');
+            }
+          });
+        }
+
+        function goTo(index) {
+          activeIndex = (index + total) % total;
+          render(0);
+        }
+
+        // Click on peeking adjacent card brings it to center
+        cards.forEach((card, i) => {
+          card.addEventListener('click', () => {
+            if (Math.abs(dragOffsetX) > 10) return;
+            if (i !== activeIndex) goTo(i);
+          });
+        });
+
+        if (prevBtn) prevBtn.addEventListener('click', () => goTo(activeIndex - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goTo(activeIndex + 1));
+        dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const idx = parseInt(dot.getAttribute('data-dot'), 10);
+            if (!isNaN(idx)) goTo(idx);
+          });
+        });
+
+        // Touch & Mouse Swipe Handling
+        function onStart(clientX, clientY) {
+          dragging = true;
+          startX = clientX;
+          startY = clientY;
+          dragOffsetX = 0;
+          isHorizontalLock = null;
+        }
+
+        function onMove(clientX, clientY, e) {
+          if (!dragging) return;
+          const dx = clientX - startX;
+          const dy = clientY - startY;
+
+          if (isHorizontalLock === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+            isHorizontalLock = Math.abs(dx) > Math.abs(dy);
+            if (isHorizontalLock) {
+              cards.forEach((c) => c.classList.add('dragging'));
+            }
+          }
+
+          if (isHorizontalLock) {
+            if (e && e.cancelable) e.preventDefault();
+            dragOffsetX = dx;
+            render(dragOffsetX);
+          }
+        }
+
+        function onEnd() {
+          if (!dragging) return;
+          dragging = false;
+          cards.forEach((c) => c.classList.remove('dragging'));
+
+          if (isHorizontalLock) {
+            if (dragOffsetX < -48) {
+              goTo(activeIndex + 1);
+            } else if (dragOffsetX > 48) {
+              goTo(activeIndex - 1);
+            } else {
+              render(0);
+            }
+          }
+          setTimeout(() => { dragOffsetX = 0; }, 40);
+        }
+
+        // Touch Listeners
+        stage.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) onStart(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        stage.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 1) onMove(e.touches[0].clientX, e.touches[0].clientY, e);
+        }, { passive: false });
+        stage.addEventListener('touchend', onEnd, { passive: true });
+        stage.addEventListener('touchcancel', onEnd, { passive: true });
+
+        // Mouse Drag Listeners
+        stage.addEventListener('mousedown', (e) => onStart(e.clientX, e.clientY));
+        window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+        window.addEventListener('mouseup', onEnd);
+
+        render(0);
+      }
+
+      /* ---------------------------------------------------------
+         9. ACT 6: COPY ADDRESS TO CLIPBOARD (execCommand safe)
+         --------------------------------------------------------- */
+      function initCopyAddress() {
+        const btn = document.getElementById('copy-address-btn');
+        if (!btn) return;
+        const fullAddress =
+          'Pink Farm, Hiran Kudna Road, Opp. Pillar No. 626, Near Ghevra Metro Station, Rohtak Road, Mundka, Delhi-110041';
+
+        btn.addEventListener('click', () => {
+          try {
+            const textarea = document.createElement('textarea');
+            textarea.value = fullAddress;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'fixed';
+            textarea.style.top = '-9999px';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, fullAddress.length);
+            const copied = document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            if (copied) {
+              showToast('Venue address copied to clipboard!');
+            } else {
+              showToast('Address ready — Pink Farm, Mundka, Delhi');
+            }
+          } catch (err) {
+            console.warn('Copy fallback:', err);
+            showToast('Pink Farm, Mundka, Delhi-110041');
+          }
+        });
+      }
+
+      /* ---------------------------------------------------------
+         10. ACT 7: INTERACTIVE RSVP & WHATSAPP BLESSINGS
+         --------------------------------------------------------- */
+      function initRsvpForm() {
+        const form = document.getElementById('rsvp-form');
+        const thanksCard = document.getElementById('rsvp-thanks');
+        const nameInput = document.getElementById('rsvp-name');
+        const blessingInput = document.getElementById('rsvp-blessing');
+        const guestWrapper = document.getElementById('guest-count-wrapper');
+        const attendBtns = Array.from(document.querySelectorAll('.attend-toggle-btn'));
+        const guestPills = Array.from(document.querySelectorAll('.guest-pill'));
+        const thanksName = document.getElementById('thanks-name');
+        const thanksSummary = document.getElementById('thanks-summary');
+        const thanksBlessingBox = document.getElementById('thanks-blessing-box');
+        const whatsappBtn = document.getElementById('whatsapp-confirm-btn');
+        const editBtn = document.getElementById('rsvp-edit-btn');
+
+        if (!form || !thanksCard) return;
+
+        let attendance = 'Attending';
+        let guestCount = '2';
+
+        // Attendance toggle styling
+        attendBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            attendance = btn.getAttribute('data-attend') || 'Attending';
+            attendBtns.forEach((b) => {
+              const isSelected = b === btn;
+              b.className = isSelected
+                ? 'attend-toggle-btn py-2.5 px-3 rounded-2xl border text-xs font-semibold transition-all bg-burgundy text-champagne-pale border-burgundy shadow-sm'
+                : 'attend-toggle-btn py-2.5 px-3 rounded-2xl border text-xs font-semibold transition-all bg-blush-ivory/80 text-burgundy border-champagne/40 hover:border-burgundy/40';
+            });
+
+            if (attendance === 'Sending Duas') {
+              guestWrapper.classList.add('opacity-45', 'pointer-events-none');
+            } else {
+              guestWrapper.classList.remove('opacity-45', 'pointer-events-none');
+            }
+          });
+        });
+
+        // Guest count pill selection
+        guestPills.forEach((pill) => {
+          pill.addEventListener('click', () => {
+            guestCount = pill.getAttribute('data-guests') || '2';
+            guestPills.forEach((p) => {
+              const isSelected = p === pill;
+              p.className = isSelected
+                ? 'guest-pill py-2 rounded-xl text-xs font-semibold border border-burgundy bg-burgundy text-champagne-pale transition-all'
+                : 'guest-pill py-2 rounded-xl text-xs font-semibold border border-champagne/40 bg-blush-ivory text-burgundy transition-all';
+            });
+          });
+        });
+
+        // Form submission
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const guestName = (nameInput.value || '').trim();
+          if (!guestName) {
+            nameInput.focus();
+            showToast('Please enter your name first');
+            return;
+          }
+
+          const blessingText = (blessingInput.value || '').trim();
+          thanksName.textContent = `Thank You, ${guestName}!`;
+
+          if (attendance === 'Attending') {
+            thanksSummary.textContent =
+              `We are overjoyed to welcome you (${guestCount} ${guestCount === '1' ? 'Guest' : 'Guests'}) to the Nikah Ceremony of Humera & Hafeez Md. Aadil on Saturday, 19th December 2026.`;
+          } else {
+            thanksSummary.textContent =
+              `Thank you for your warm wishes and heartfelt duas for Humera & Hafeez Md. Aadil. You will be dearly missed!`;
+          }
+
+          if (blessingText) {
+            thanksBlessingBox.textContent = `“${blessingText}”`;
+            thanksBlessingBox.classList.remove('hidden');
+          } else {
+            thanksBlessingBox.classList.add('hidden');
+          }
+
+          // Pre-fill WhatsApp message for +919717257836
+          const waLines = [
+            `Assalamu Alaikum!`,
+            `RSVP for Humera & Hafeez Md. Aadil's Nikah (19 Dec 2026)`,
+            `Name: ${guestName}`,
+            `Status: ${attendance === 'Attending' ? `Joyfully Attending (${guestCount} ${guestCount === '1' ? 'Guest' : 'Guests'})` : 'Sending Warm Duas & Blessings'}`
+          ];
+          if (blessingText) {
+            waLines.push(`Blessings: "${blessingText}"`);
+          }
+          whatsappBtn.href = `https://wa.me/919717257836?text=${encodeURIComponent(waLines.join('\n'))}`;
+
+          form.classList.add('hidden');
+          thanksCard.classList.remove('hidden');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.fromTo(thanksCard, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' });
+          }
+
+          if (typeof confetti === 'function') {
+            confetti({
+              particleCount: 38,
+              spread: 65,
+              origin: { y: 0.72 },
+              colors: ['#D4AF37', '#E8C97A', '#6B122A', '#F3C2CE']
+            });
+          }
+          showToast('Your blessings have been recorded!');
+        });
+
+        // Edit response
+        if (editBtn) {
+          editBtn.addEventListener('click', () => {
+            thanksCard.classList.add('hidden');
+            form.classList.remove('hidden');
+          });
+        }
+      }
+
+      /* ---------------------------------------------------------
+         BOOTSTRAP ALL EXPERIENCES ON DOM READY
+         --------------------------------------------------------- */
+      window.addEventListener('DOMContentLoaded', () => {
+        initPetalCanvas();
+        initAmbientAudio();
+        initBookCoverReveal();
+        initPullToRevealScroll();
+        initCountdown();
+        initCalendarExport();
+        initProgrammeCarousel();
+        initCopyAddress();
+        initRsvpForm();
+      });
+    })();
+  </script>
+</body>
+</html>
